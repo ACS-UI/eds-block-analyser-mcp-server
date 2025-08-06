@@ -19,12 +19,12 @@ This MCP server provides a single tool that returns a comprehensive UI architect
 
 ### Global Installation
 ```bash
-npm install -g eds-block-analyser-mcp-server-test
+npm install -g eds-block-analyser-mcp-server
 ```
 
 ### Local Installation
 ```bash
-npm install eds-block-analyser-mcp-server-test
+npm install eds-block-analyser-mcp-server
 ```
 
 ## Usage
@@ -41,7 +41,7 @@ Add this to your Claude Desktop configuration file:
   "mcpServers": {
     "eds-block-analyser": {
       "command": "npx",
-      "args": ["eds-block-analyser-mcp-server-test"]
+      "args": ["eds-block-analyser-mcp-server"]
     }
   }
 }
@@ -55,7 +55,7 @@ import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js'
 
 const transport = new StdioClientTransport({
   command: 'npx',
-  args: ['eds-block-analyser-mcp-server-test']
+  args: ['eds-block-analyser-mcp-server']
 });
 
 const client = new Client({
@@ -103,8 +103,8 @@ The tool provides a prompt that generates CSV output with the following columns:
 
 ### Clone and Setup
 ```bash
-git clone https://github.com/kalimuthu-a/eds-block-analyser-mcp-server-test.git
-cd eds-block-analyser-mcp-server-test
+git clone https://github.com/kalimuthu-a/eds-block-analyser-mcp-server.git
+cd eds-block-analyser-mcp-server
 npm install
 ```
 
@@ -115,7 +115,7 @@ npm start
 
 ### Test with MCP Inspector
 ```bash
-npx @modelcontextprotocol/inspector npx eds-block-analyser-mcp-server-test
+npx @modelcontextprotocol/inspector npx eds-block-analyser-mcp-server
 ```
 
 ## Requirements
@@ -136,4 +136,4 @@ MIT
 
 ## Support
 
-If you encounter any issues, please file them on the [GitHub repository](https://github.com/kalimuthu-a/eds-block-analyser-mcp-server-test/issues).
+If you encounter any issues, please file them on the [GitHub repository](https://github.com/kalimuthu-a/eds-block-analyser-mcp-server/issues).
