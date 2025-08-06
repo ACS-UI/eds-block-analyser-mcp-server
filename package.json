@@ -1,0 +1,37 @@
+{
+  "name": "eds-block-analyser-mcp-server",
+  "version": "1.0.0",
+  "description": "MCP server that analyses the screen and estimates",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "eds-block-analyser-mcp-server": "index.js"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "ui",
+    "architect",
+    "block-analyser",
+    "figma",
+    "web-page",
+    "effort-estimation",
+    "prompt"
+  ],
+  "author": "ACS UI",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.4.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ACS-UI/eds-block-analyser-mcp-server.git"
+  }
+}
