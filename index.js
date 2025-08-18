@@ -49,7 +49,7 @@ Your task is to estimate the effort and outline the approach for converting a Fi
 
 Respond in **CSV format**, with these headers:
 
-"Page Title","UI Component Name","Function description","Tshirt Sizing","Complexity justification","Other remarks"
+"Page Title","UI Component Name","Function description","Tshirt Sizing","Number of occurrences across pages", "Complexity justification","Page URL","Other remarks"
 
 
 - Quotes are required for every value.
@@ -57,6 +57,7 @@ Respond in **CSV format**, with these headers:
 - Include essential items like '"Header"', '"Footer"', and '"Cookie Acceptance Banner"' (if applicable).
 - Never combine multiple items into one row.
 - If a component name contains commas, enclose in **double quotes**.
+- Also add one more column for source block name incase the block is a variation of another block
 
 ---
 ### Workflow
@@ -82,7 +83,9 @@ Respond in **CSV format**, with these headers:
 - Deduplicate intelligently, preserving variations if necessary.
 - Save final clean output to an **Excel file** ('.xlsx') with proper formatting.
 
----
+**Step 5: Create a Summary MD file**
+- Create a summary MD file with list of URLs that are crawled and the UI blocks that are estimated.
+- Give the block statistics like total blocks, total pages, total URLs, etc.
 
 ### Notes
 
