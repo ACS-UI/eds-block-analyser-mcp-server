@@ -54,9 +54,10 @@ Use Firecrawl tools for comprehensive web scraping and URL discovery:
 2. **Intelligent URL Selection**: When >50 URLs found, prioritize distinct templates and page types
 3. **Batch Processing**: Process URLs in batches of 50, ensuring comprehensive coverage
 4. **Content Extraction**: Extract all relevant content, components, and design patterns from each URL
-5. **EDS Block Mapping**: Use Block Collection tools to map discovered components to existing EDS blocks
-6. **Effort Estimation**: Analyze complexity and estimate effort for each component based on EDS patterns
-7. **Output Generation**: Create comprehensive analysis with CSV, summary, and evaluation artifacts
+5. **URL Statistics Tracking**: For each URL, record processing status, component count, complexity distribution, and template classification
+6. **EDS Block Mapping**: Use Block Collection tools to map discovered components to existing EDS blocks
+7. **Effort Estimation**: Analyze complexity and estimate effort for each component based on EDS patterns
+8. **Output Generation**: Create comprehensive analysis with CSV, summary (including URL analysis section), and evaluation artifacts
 
 ### Intelligent URL Selection Strategy (When >50 URLs Found)
 1. **Template Diversity**: Prioritize URLs with different page templates (home, product, contact, etc.)
@@ -133,6 +134,8 @@ For comprehensive URL discovery and content extraction:
 6. **URL Discovery**: Identify all sub-pages, navigation links, and related content areas
 7. **Metadata Extraction**: Gather page titles, descriptions, and structural information for analysis
 8. **Template Classification**: Categorize URLs by template type to ensure diverse selection when limiting to 50
+9. **URL Tracking**: Maintain comprehensive log of all URLs processed with individual statistics
+10. **Processing Status**: Track success/failure status for each URL and document any issues encountered
 
 ---
 
@@ -149,6 +152,54 @@ For comprehensive URL discovery and content extraction:
 \`\`\`csv
 "Page Title","UI Component Name","Function description","Tshirt Sizing","Number of occurrences","Complexity justification","Page URL","Source block name","Other remarks"
 \`\`\`
+
+### URL Analysis Requirements
+For each URL processed, track and document the following statistics:
+
+1. **URL Processing Stats**:
+   - URL: The complete URL that was analyzed
+   - Page Title: Title extracted from the page
+   - Processing Status: Success/Failed/Partial
+   - Component Count: Total number of UI components identified
+   - Unique Components: Number of distinct component types found
+   - Template Type: Classification (home, product, contact, etc.)
+
+2. **Complexity Distribution per URL**:
+   - S (Small) components count
+   - M (Medium) components count  
+   - L (Large) components count
+   - XL (Extra Large) components count
+   - XXL (Extra Extra Large) components count
+
+3. **Coverage Analysis**:
+   - Total URLs discovered: [Number]
+   - Total URLs analyzed: [Number]
+   - **Coverage percentage**: (Analyzed URLs / Total Discovered URLs) × 100
+   - URLs excluded due to Firecrawl limits: [Number and reasons]
+   - URLs excluded due to processing failures: [Number and reasons]
+   - Template coverage assessment: Percentage of unique templates analyzed
+
+4. **URL Summary Table** (to be included in analysis_summary.md):
+   | URL | Page Title | Status | Total Components | Unique Components | Template Type | Complexity Distribution |
+   |-----|------------|--------|------------------|-------------------|---------------|------------------------|
+   | [URL] | [Title] | [Status] | [Count] | [Count] | [Type] | S:M:L:XL:XXL |
+
+5. **Coverage Summary Section** (to be included in analysis_summary.md):
+   \`\`\`
+   ## Coverage Analysis
+   - **Total Pages Discovered**: [X] URLs
+   - **Pages Successfully Analyzed**: [Y] URLs
+   - **Coverage Percentage**: [Z]%
+   - **Pages Excluded**: [W] URLs (Firecrawl limits: [A], Processing failures: [B])
+   - **Template Coverage**: [T]% of unique templates analyzed
+   \`\`\`
+
+6. **URL Processing Log**:
+   - Document any URLs that failed to process
+   - Note partial processing results
+   - Track time spent on each URL
+   - Record any special considerations or limitations
+   - Log URLs excluded due to Firecrawl 50-URL limit
 
 ### Quality Checklist
 - [ ] All components identified and sized appropriately
@@ -228,6 +279,13 @@ For comprehensive URL discovery and content extraction:
 
 2. **Summary Report** ('analysis_summary.md')
    - Executive summary of findings
+   - **URL Analysis Section**: Complete list of all URLs analyzed with individual statistics
+     - URL count and breakdown by page type/template
+     - **Coverage Analysis**: Percentage of pages analyzed against total discovered pages
+     - Component count per URL
+     - Complexity distribution per URL
+     - Unique components discovered per URL
+     - URL processing status (success/failed/partial)
    - Block statistics (total blocks, pages, URLs)
    - Reusability recommendations
    - Technical implementation notes
