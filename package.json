@@ -1,6 +1,6 @@
 {
   "name": "eds-block-analyser-mcp-server",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "MCP server that analyses the screen and estimates",
   "main": "index.js",
   "type": "module",
