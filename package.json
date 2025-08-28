@@ -1,7 +1,7 @@
 {
   "name": "eds-block-analyser-mcp-server",
-  "version": "1.0.6",
-  "description": "MCP server that analyses the screen and estimates",
+  "version": "1.0.9",
+  "description": "MCP server that orchestrates complete website analysis, component extraction, variation grouping, and effort estimation",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -25,7 +25,7 @@
   "author": "ACS UI",
   "license": "MIT",
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^0.4.0"
+    "@modelcontextprotocol/sdk": "^1.17.2"
   },
   "engines": {
     "node": ">=18.0.0"

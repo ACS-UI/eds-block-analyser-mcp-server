@@ -8,9 +8,15 @@ This MCP server provides a single tool that returns a comprehensive UI architect
 
 ## Features
 
-- **Component Analysis**: Identifies UI components from Figma designs or web pages
-- **Effort Estimation**: Uses T-shirt sizing (S, M, L, XL, XXL) for complexity assessment
-- **CSV Output**: Provides structured output in CSV format for easy processing
+- **Complete Workflow Orchestration**: End-to-end website analysis from URL collection to artifact creation
+- **URL Discovery and Collection**: Automated discovery of all website URLs and intelligent selection
+- **Component Structure Extraction**: Batch processing of URLs to extract component structure and markup
+- **EDS Block Collection Integration**: Maps components to Adobe's EDS block collection
+- **Block Variation Analysis**: Groups similar blocks into variations with appropriate naming
+- **Technical Naming**: Provides technical names for blocks not in the collection
+- **Effort Estimation**: Uses T-shirt sizing (S-Simple, M-Medium, C-Complex) for complexity assessment
+- **Comprehensive Artifacts**: Creates multiple artifacts including CSV, summary reports, and catalogs
+- **Quality Gates**: Built-in quality checks and validation at each phase
 - **Performance Focus**: Targets Lighthouse score of 100
 - **Modular Design**: Emphasizes reusable, independent UI blocks
 - **Plain Tech Stack**: Focuses on vanilla JavaScript and CSS without frameworks
@@ -77,6 +83,23 @@ console.log(result.content[0].text);
 
 ## Available Tools
 
+### `website_analysis_planner`
+- **Description:** Orchestrate the complete flow for analyzing websites, extracting components, and creating implementation artifacts with effort estimation
+- **Parameters:** None
+- **Returns:** A comprehensive framework for complete website analysis orchestration
+
+The framework includes:
+- **Phase 1**: URL Collection and Discovery
+- **Phase 2**: Component Structure Extraction
+- **Phase 3**: Available Component Analysis
+- **Phase 4**: Component Mapping and Variation Analysis
+- **Phase 5**: Effort Estimation and T-Shirt Sizing (S-Simple, M-Medium, C-Complex)
+- **Phase 6**: Validation and Quality Assurance
+- **Phase 7**: Artifact Creation (only after validation passes)
+- Quality gates and validation criteria
+- Error handling and success metrics
+- Complete orchestration workflow
+
 ### `eds_block_analyser`
 - **Description:** Get a UI architect prompt for analyzing and estimating UI block conversion
 - **Parameters:** None
@@ -89,15 +112,43 @@ The prompt includes:
 - Few-shot examples for guidance
 - Strict CSV output format requirements
 
+### `block_variation_analyzer`
+- **Description:** Group similar blocks into variations and provide appropriate naming based on EDS block collection or technical naming conventions
+- **Parameters:** None
+- **Returns:** A comprehensive framework for block variation analysis and naming
+
+The framework includes:
+- Block similarity assessment guidelines
+- Source block identification protocols
+- Naming convention priorities (EDS collection first, then technical names)
+- Technical naming guidelines for different component types
+- Variation classification system
+- Quality criteria for analysis
+
+### Framework Tools
+- **`self_evaluation_framework`**: Quality assessment metrics and scoring
+- **`error_handling_framework`**: Error handling and escalation protocols
+- **`security_guardrails_framework`**: Security and safety protocols
+- **`required_artifacts_framework`**: Required output specifications
+
 ## Output Format
 
 The tool provides a prompt that generates CSV output with the following columns:
 - Page Title
 - UI Component Name
 - Function description
-- Tshirt Sizing (S, M, L, XL, XXL)
+- Tshirt Sizing (S-Simple, M-Medium, C-Complex)
+- Number of occurrences
 - Complexity justification
+- Page URL
+- Source block name
+- Variation type
 - Other remarks
+
+### Required Artifacts
+1. **CSV Analysis File** ('ui_blocks_analysis.csv') - Complete component breakdown
+2. **Summary Report** ('analysis_summary.md') - Executive summary with URL analysis
+3. **Evaluation Log** ('evaluation_log.md') - Quality assessment and iteration tracking
 
 ## Development
 
