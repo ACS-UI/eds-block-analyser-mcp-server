@@ -148,9 +148,7 @@ The tool provides a prompt that generates CSV output with the following columns:
 ### Required Artifacts
 1. **CSV Analysis File** ('ui_blocks_analysis.csv') - Complete component breakdown
 2. **Summary Report** ('analysis_summary.md') - Executive summary with URL analysis
-3. **Component Catalog** ('component_catalog.md') - Complete component list with mappings
-4. **Effort Breakdown** ('effort_breakdown.md') - Detailed effort estimates and timeline
-5. **Evaluation Log** ('evaluation_log.md') - Quality assessment and iteration tracking
+3. **Evaluation Log** ('evaluation_log.md') - Quality assessment and iteration tracking
 
 ## Development
 

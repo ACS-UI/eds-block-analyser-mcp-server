@@ -90,6 +90,292 @@ const ERROR_HANDLING_FRAMEWORK = `
 - Performance targets that may be unrealistic with specified tech stack
 `;
 
+// Template Resources
+const CSV_TEMPLATE = `Page Title,UI Component Name,Function description,Tshirt Sizing,Number of occurrences,Complexity justification,Page URL,Source block name,Variation type,Other remarks
+[Page Title],[Component Name],[Brief description of component function],[S/M/C],[Count],[Justification for sizing],[Page URL],[Original block name],[Variation classification],[Additional notes]`;
+
+const ANALYSIS_SUMMARY_TEMPLATE = `# Website Analysis Summary Report
+
+## Executive Summary
+[Brief overview of the analysis findings and key insights]
+
+## Project Information
+- **Analysis Date**: [Date]
+- **Website**: [Website URL]
+- **Total Pages Analyzed**: [Number]
+- **Total Components Identified**: [Number]
+
+## URL Analysis
+### Page Statistics
+- **Home Page**: [URL]
+- **Product Pages**: [Count] pages
+- **Contact Pages**: [Count] pages
+- **Other Pages**: [Count] pages
+
+### Page Categories
+- [Category 1]: [Count] pages
+- [Category 2]: [Count] pages
+- [Category 3]: [Count] pages
+
+### URL-wise Statistics
+| URL | Page Title | Components Found | EDS Mapped | Technical Names | T-Shirt Sizing | Status |
+|-----|------------|------------------|------------|-----------------|----------------|--------|
+| [URL 1] | [Page Title 1] | [Count] | [Count] | [Count] | S:[X] M:[Y] C:[Z] | [Processed/Error] |
+| [URL 2] | [Page Title 2] | [Count] | [Count] | [Count] | S:[X] M:[Y] C:[Z] | [Processed/Error] |
+| [URL 3] | [Page Title 3] | [Count] | [Count] | [Count] | S:[X] M:[Y] C:[Z] | [Processed/Error] |
+| [URL 4] | [Page Title 4] | [Count] | [Count] | [Count] | S:[X] M:[Y] C:[Z] | [Processed/Error] |
+| [URL 5] | [Page Title 5] | [Count] | [Count] | [Count] | S:[X] M:[Y] C:[Z] | [Processed/Error] |
+
+### URL Processing Summary
+- **Total URLs Processed**: [X] of [Y] ([Percentage]%)
+- **Successfully Processed**: [Count] URLs
+- **Failed to Process**: [Count] URLs
+- **Average Components per Page**: [Average number]
+- **Most Complex Page**: [URL] with [X] components
+- **Simplest Page**: [URL] with [X] components
+
+### URL Accessibility Status
+- **Accessible URLs**: [Count] ([Percentage]%)
+- **Inaccessible URLs**: [Count] ([Percentage]%)
+- **Redirected URLs**: [Count] ([Percentage]%)
+- **Error URLs**: [Count] ([Percentage]%)
+
+### URL by Component Density
+- **High Density (>20 components)**: [Count] URLs
+- **Medium Density (10-20 components)**: [Count] URLs
+- **Low Density (<10 components)**: [Count] URLs
+
+## Component Mapping Summary
+### Component Distribution
+- **Total Components**: [Number]
+- **Mapped to EDS Blocks**: [Number] ([Percentage]%)
+- **Using Technical Names**: [Number] ([Percentage]%)
+
+### Most Common Components
+1. [Component Name]: [Count] occurrences
+2. [Component Name]: [Count] occurrences
+3. [Component Name]: [Count] occurrences
+
+## Variation Analysis Results
+### Variation Types Identified
+- **Size Variations**: [Count] components
+- **Style Variations**: [Count] components
+- **State Variations**: [Count] components
+- **Content Variations**: [Count] components
+
+### Key Variations
+- [Variation Type]: [Description]
+- [Variation Type]: [Description]
+
+## Effort Estimation Summary
+### T-Shirt Sizing Distribution
+- **Simple (S)**: [Count] components ([Percentage]%)
+- **Medium (M)**: [Count] components ([Percentage]%)
+- **Complex (C)**: [Count] components ([Percentage]%)
+
+### Estimated Timeline
+- **Simple Components**: [X] days
+- **Medium Components**: [X] days
+- **Complex Components**: [X] days
+- **Total Estimated Effort**: [X] days
+
+## Implementation Recommendations
+### Priority Components
+1. [Component Name] - [Reason for priority]
+2. [Component Name] - [Reason for priority]
+3. [Component Name] - [Reason for priority]
+
+### Technical Considerations
+- [Technical consideration 1]
+- [Technical consideration 2]
+- [Technical consideration 3]
+
+### Risk Assessment
+- **High Risk**: [Risk description]
+- **Medium Risk**: [Risk description]
+- **Low Risk**: [Risk description]
+
+## Quality Metrics
+- **Component Identification Accuracy**: [Percentage]%
+- **EDS Mapping Coverage**: [Percentage]%
+- **Variation Analysis Completeness**: [Percentage]%
+- **Overall Quality Score**: [Percentage]%
+
+## Next Steps
+1. [Next step 1]
+2. [Next step 2]
+3. [Next step 3]
+
+---
+*Report generated on [Date] by EDS Block Analyser*`;
+
+const EVALUATION_LOG_TEMPLATE = `# Evaluation Log - Website Analysis
+
+## Analysis Session Information
+- **Session ID**: [Unique identifier]
+- **Analysis Date**: [Date and time]
+- **Website**: [Website URL]
+- **Analyst**: [Analyst name/ID]
+
+## Quality Assessment Scores
+
+### Phase 1: URL Processing and Validation
+- **Score**: [X]/100
+- **Status**: [Pass/Fail]
+- **Notes**: [Comments on URL processing quality]
+
+### Phase 2: Component Structure Extraction
+- **Score**: [X]/100
+- **Status**: [Pass/Fail]
+- **Notes**: [Comments on component extraction quality]
+
+### Phase 3: Available Component Analysis
+- **Score**: [X]/100
+- **Status**: [Pass/Fail]
+- **Notes**: [Comments on EDS block analysis quality]
+
+### Phase 4: Component Mapping and Variation Analysis
+- **Score**: [X]/100
+- **Status**: [Pass/Fail]
+- **Notes**: [Comments on mapping and variation quality]
+
+### Phase 5: Effort Estimation and T-Shirt Sizing
+- **Score**: [X]/100
+- **Status**: [Pass/Fail]
+- **Notes**: [Comments on effort estimation quality]
+
+### Phase 6: Validation and Quality Assurance
+- **Score**: [X]/100
+- **Status**: [Pass/Fail]
+- **Notes**: [Comments on validation quality]
+
+## Overall Quality Metrics
+
+### Coverage Metrics
+- **URL Coverage**: [Percentage]% ([X] of [Y] URLs processed)
+- **Component Coverage**: [Percentage]% ([X] of [Y] components identified)
+- **EDS Mapping Coverage**: [Percentage]% ([X] of [Y] components mapped)
+
+### Accuracy Metrics
+- **Component Identification Accuracy**: [Percentage]%
+- **Variation Classification Accuracy**: [Percentage]%
+- **Effort Estimation Accuracy**: [Percentage]%
+
+### Completeness Metrics
+- **Required Artifacts Created**: [X] of [Y]
+- **Data Consistency**: [Percentage]%
+- **Documentation Completeness**: [Percentage]%
+
+## Iteration Tracking
+
+### Iteration 1
+- **Date**: [Date]
+- **Changes Made**: [Description of changes]
+- **Quality Impact**: [Impact on quality scores]
+- **Status**: [Completed/In Progress/Failed]
+
+### Iteration 2
+- **Date**: [Date]
+- **Changes Made**: [Description of changes]
+- **Quality Impact**: [Impact on quality scores]
+- **Status**: [Completed/In Progress/Failed]
+
+### Iteration 3
+- **Date**: [Date]
+- **Changes Made**: [Description of changes]
+- **Quality Impact**: [Impact on quality scores]
+- **Status**: [Completed/In Progress/Failed]
+
+## Issues and Challenges
+
+### Technical Issues
+- **Issue 1**: [Description]
+  - **Impact**: [High/Medium/Low]
+  - **Resolution**: [How it was resolved]
+  - **Status**: [Resolved/Pending]
+
+- **Issue 2**: [Description]
+  - **Impact**: [High/Medium/Low]
+  - **Resolution**: [How it was resolved]
+  - **Status**: [Resolved/Pending]
+
+### Data Quality Issues
+- **Issue 1**: [Description]
+  - **Impact**: [High/Medium/Low]
+  - **Resolution**: [How it was resolved]
+  - **Status**: [Resolved/Pending]
+
+- **Issue 2**: [Description]
+  - **Impact**: [High/Medium/Low]
+  - **Resolution**: [How it was resolved]
+  - **Status**: [Resolved/Pending]
+
+## Improvement Recommendations
+
+### Process Improvements
+1. **[Recommendation 1]**: [Description and rationale]
+2. **[Recommendation 2]**: [Description and rationale]
+3. **[Recommendation 3]**: [Description and rationale]
+
+### Tool Improvements
+1. **[Tool Improvement 1]**: [Description and rationale]
+2. **[Tool Improvement 2]**: [Description and rationale]
+3. **[Tool Improvement 3]**: [Description and rationale]
+
+### Quality Improvements
+1. **[Quality Improvement 1]**: [Description and rationale]
+2. **[Quality Improvement 2]**: [Description and rationale]
+3. **[Quality Improvement 3]**: [Description and rationale]
+
+## Validation Results
+
+### Quality Gates Status
+- **Gate 1 - URL Processing Completeness**: [Pass/Fail] - [Comments]
+- **Gate 2 - Component Extraction Accuracy**: [Pass/Fail] - [Comments]
+- **Gate 3 - EDS Mapping Coverage**: [Pass/Fail] - [Comments]
+- **Gate 4 - Sizing Consistency**: [Pass/Fail] - [Comments]
+- **Gate 5 - Data Quality and Consistency**: [Pass/Fail] - [Comments]
+- **Gate 6 - Phase 1-2 Artifact Dependency**: [Pass/Fail] - [Comments]
+
+### Final Validation
+- **Overall Status**: [Pass/Fail]
+- **Ready for Artifact Creation**: [Yes/No]
+- **Final Quality Score**: [X]/100
+
+## Lessons Learned
+
+### What Worked Well
+1. [Lesson 1]
+2. [Lesson 2]
+3. [Lesson 3]
+
+### What Could Be Improved
+1. [Improvement area 1]
+2. [Improvement area 2]
+3. [Improvement area 3]
+
+### Best Practices Identified
+1. [Best practice 1]
+2. [Best practice 2]
+3. [Best practice 3]
+
+## Final Assessment
+
+### Success Criteria Met
+- [ ] 100% URL coverage achieved
+- [ ] >95% component identification accuracy
+- [ ] All 3 required artifacts created
+- [ ] >95% quality score achieved
+- [ ] Analysis completed within timeframe
+- [ ] Phase 1-2 artifact dependency maintained
+
+### Overall Assessment
+**Final Quality Score**: [X]/100
+**Recommendation**: [Proceed with implementation/Requires revision/Needs additional analysis]
+
+---
+*Evaluation log generated on [Date] by EDS Block Analyser*`;
+
 // Required Artifacts Framework as a separate resource
 const REQUIRED_ARTIFACTS_FRAMEWORK = `
 ## Required Artifacts Output
@@ -286,25 +572,22 @@ Orchestrate the complete flow for analyzing websites, extracting components, and
 
 ### Complete Workflow Orchestration
 
-#### Phase 1: URL Collection and Discovery
-**Objective**: Collect all URLs from the given domain and create comprehensive artifacts
-**Tools Required**: WebResearch tools (search_google, visit_page)
+#### Phase 1: URL Processing and Validation
+**Objective**: Process and validate the URLs provided in the user prompt
+**Tools Required**: WebResearch tools (visit_page)
 **Process**:
-1. **Domain Analysis**: Start with the provided domain URL
-2. **Crawl Discovery**: Use visit_page to discover all sub-URLs and internal links
-3. **Sitemap Extraction**: Identify navigation patterns and page hierarchies
-4. **URL Categorization**: Group URLs by page type (home, product, contact, etc.)
-5. **Complete URL Collection**: Ensure ALL URLs are discovered without missing any
-6. **Artifact Creation**: Create comprehensive site-urls artifact with ALL discovered URLs
-7. **URL Validation**: Verify accessibility and categorize by template type
+1. **URL Input Processing**: Process the URLs provided in the user prompt
+2. **URL Validation**: Verify accessibility and categorize by template type
+3. **URL Categorization**: Group URLs by page type (home, product, contact, etc.)
+4. **Duplicate Filtering**: Remove any duplicate URLs from the provided list
+5. **Artifact Creation**: Create comprehensive site-urls artifact with the provided URLs
+6. **URL Statistics**: Document URL statistics and metadata
 
 **Quality Criteria**:
-- [ ] ALL URLs discovered and documented (100% coverage)
-- [ ] All main navigation pages discovered
-- [ ] All sub-pages within 3 levels of navigation captured
+- [ ] All provided URLs processed and documented (100% coverage)
+- [ ] URL accessibility verified
 - [ ] URL categorization by page type completed
 - [ ] Duplicate URLs filtered out
-- [ ] URL accessibility verified
 - [ ] site-urls artifact created with complete URL list
 - [ ] URL statistics and metadata documented
 
@@ -337,11 +620,10 @@ Orchestrate the complete flow for analyzing websites, extracting components, and
 **Tools Required**: Block Collection tools (fetch_aem_block_docs, search_aem_block_docs, search_aem_block_code)
 **Process**:
 1. **Collection Fetch**: Fetch complete EDS block collection documentation
-2. **Component Catalog**: Create comprehensive list of available EDS blocks
-3. **Characteristic Mapping**: Document component characteristics, props, and variations
-4. **Code Examples**: Extract implementation examples and patterns
-5. **Usage Guidelines**: Document best practices and implementation notes
-6. **Output**: Create available-components artifact with EDS block catalog
+2. **Characteristic Mapping**: Document component characteristics, props, and variations
+3. **Code Examples**: Extract implementation examples and patterns
+4. **Usage Guidelines**: Document best practices and implementation notes
+5. **Output**: Create available-components artifact with EDS block catalog
 
 **Quality Criteria**:
 - [ ] Complete EDS block collection fetched
@@ -420,11 +702,14 @@ Orchestrate the complete flow for analyzing websites, extracting components, and
 
 #### Phase 7: Artifact Creation
 **Objective**: Create comprehensive artifacts for implementation (only after validation passes)
+**Tools Required**: Template tools (csv_template, analysis_summary_template, evaluation_log_template)
 **Required Artifacts**:
 1. **CSV Analysis File** ('ui_blocks_analysis.csv')
+   - Use csv_template tool to access the template
    - Format: "Page Title","UI Component Name","Function description","Tshirt Sizing","Number of occurrences","Complexity justification","Page URL","Source block name","Variation type","Other remarks"
 
 2. **Summary Report** ('analysis_summary.md')
+   - Use analysis_summary_template tool to access the template
    - Executive summary of findings
    - URL analysis section with statistics
    - Component mapping summary
@@ -432,25 +717,22 @@ Orchestrate the complete flow for analyzing websites, extracting components, and
    - Effort estimation summary
    - Implementation recommendations
 
-3. **Component Catalog** ('component_catalog.md')
-   - Complete list of identified components
-   - EDS block mappings
-   - Variation classifications
-   - Implementation guidelines
-
-4. **Effort Breakdown** ('effort_breakdown.md')
-   - Detailed effort estimates by component
-   - Sizing rationale
-   - Risk assessment
-   - Implementation timeline
-
-5. **Evaluation Log** ('evaluation_log.md')
+3. **Evaluation Log** ('evaluation_log.md')
+   - Use evaluation_log_template tool to access the template
    - Quality assessment scores
    - Iteration tracking
    - Improvement recommendations
 
+**Process**:
+1. **Template Access**: Use template tools to get the base structure for each artifact
+2. **Data Population**: Fill in all placeholder values with actual analysis data
+3. **Validation**: Ensure all required sections are completed
+4. **Consistency Check**: Verify data consistency across all artifacts
+5. **Final Review**: Review artifacts for completeness and quality
+
 **Quality Criteria**:
-- [ ] All required artifacts created
+- [ ] All required artifacts created using templates
+- [ ] All placeholder values replaced with actual data
 - [ ] Data consistency across artifacts
 - [ ] Clear implementation guidance
 - [ ] Comprehensive coverage of analysis
@@ -460,9 +742,10 @@ Orchestrate the complete flow for analyzing websites, extracting components, and
 
 #### Execution Plan
 1. **Initialize**: Set up project structure and artifact directories
-2. **Phase 1**: Execute URL collection and discovery
-   - **Output**: site-urls artifact with ALL discovered URLs
-   - **Validation**: Ensure 100% URL coverage before proceeding
+2. **Phase 1**: Execute URL processing and validation
+   - **Input**: URLs provided in user prompt
+   - **Output**: site-urls artifact with all provided URLs
+   - **Validation**: Ensure all provided URLs are processed before proceeding
 3. **Phase 2**: Execute component structure extraction using Phase 1 artifacts
    - **Input**: site-urls artifact from Phase 1
    - **Process**: ALL URLs from Phase 1 artifact
@@ -474,7 +757,7 @@ Orchestrate the complete flow for analyzing websites, extracting components, and
 8. **Phase 7**: Execute artifact creation (only after validation passes)
 
 #### Quality Gates (Validated Before Artifact Creation)
-- **Gate 1**: URL collection completeness (100% of discoverable URLs in site-urls artifact)
+- **Gate 1**: URL processing completeness (100% of provided URLs in site-urls artifact)
 - **Gate 2**: Component extraction accuracy (>95% of visible components from ALL URLs in Phase 1 artifact)
 - **Gate 3**: EDS mapping coverage (>80% of components mapped)
 - **Gate 4**: Sizing consistency (all components sized with rationale)
@@ -490,9 +773,9 @@ Orchestrate the complete flow for analyzing websites, extracting components, and
 - **Artifact Creation Errors**: Retry with simplified format (only after validation passes)
 
 ### Success Metrics
-- **Coverage**: 100% of website pages discovered and analyzed (no URLs missed)
+- **Coverage**: 100% of provided URLs processed and analyzed (no URLs missed)
 - **Accuracy**: >95% of components correctly identified
-- **Completeness**: All required artifacts created with Phase 1-2 artifact dependency maintained
+- **Completeness**: All 3 required artifacts created with Phase 1-2 artifact dependency maintained
 - **Quality**: >95% quality score in evaluation
 - **Timeliness**: Analysis completed within reasonable timeframe
 - **Artifact Integrity**: Phase 2 successfully processes ALL URLs from Phase 1 artifacts
@@ -725,6 +1008,9 @@ This analysis tool depends on the following framework tools for comprehensive fu
 4. **security_guardrails_framework** - Use this tool to access security and safety protocols
 5. **required_artifacts_framework** - Use this tool to access required output specifications
 6. **block_variation_analyzer** - Use this tool to group similar blocks into variations and apply appropriate naming conventions
+7. **csv_template** - Use this tool to access the CSV analysis template
+8. **analysis_summary_template** - Use this tool to access the analysis summary template
+9. **evaluation_log_template** - Use this tool to access the evaluation log template
  
 **Important**: Always reference these framework tools when performing analysis to ensure compliance with quality standards, security protocols, and output requirements.
 
@@ -828,6 +1114,37 @@ server.registerTool("website_analysis_planner",
   },
   async () => ({
     content: [{ type: "text", text: WEBSITE_ANALYSIS_PLANNER_FRAMEWORK }]
+  })
+);
+
+// Add template tools for artifact creation
+server.registerTool("csv_template",
+  {
+    title: "CSV Analysis Template",
+    description: "Access the template for creating the CSV analysis file (ui_blocks_analysis.csv)",
+  },
+  async () => ({
+    content: [{ type: "text", text: CSV_TEMPLATE }]
+  })
+);
+
+server.registerTool("analysis_summary_template",
+  {
+    title: "Analysis Summary Template",
+    description: "Access the template for creating the analysis summary report (analysis_summary.md)",
+  },
+  async () => ({
+    content: [{ type: "text", text: ANALYSIS_SUMMARY_TEMPLATE }]
+  })
+);
+
+server.registerTool("evaluation_log_template",
+  {
+    title: "Evaluation Log Template",
+    description: "Access the template for creating the evaluation log (evaluation_log.md)",
+  },
+  async () => ({
+    content: [{ type: "text", text: EVALUATION_LOG_TEMPLATE }]
   })
 );
 
