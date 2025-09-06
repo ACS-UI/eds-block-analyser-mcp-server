@@ -169,7 +169,7 @@ const REQUIRED_ARTIFACTS_FRAMEWORK = `
 
 1. **CSV Analysis File** ('ui_blocks_analysis.csv')
    - Contains the complete component breakdown
-   - Use the template 'ui-blocks-analysis-template' to create the csv file.
+   - Use the template 'ui-blocks-analysis-template' to create the csv file. Wrap the columns in quotes.
 
 2. **Summary Report** ('analysis_summary.md')
    - Executive summary of findings
@@ -195,18 +195,15 @@ const REQUIRED_ARTIFACTS_FRAMEWORK = `
    - **Decision rationale**: Why iterations were needed and what was improved
    - use the template 'evaluation-log-template' to create the evaluation log.
 
-4. **Template Mapping Diagram** ('template-mapping-template.md')
+4. **Template Mapping** ('template-mapping-template.md')
    - **Template Structure**: Document the template structure and component relationships.
-   - **Component Relationships**: Document the relationships between components.
-   - **Component Breakdown**: Document the breakdown of components into sub-components.
-   - **Component Reusability**: Document the reusability of components.
-   - use the template 'template-mapping-template.md' to create the template mapping diagram.
+   - use the template 'template-mapping-template.md' to create the template mapping.
 
 ### Artifact Dependencies
 - Site-urls artifact feeds into Initial Analysis
 - CSV file feeds into Summary report
 - Evaluation log tracks quality of both CSV and Summary
-- Template mapping diagram used to understand the template structure and component relationships.
+- Summary report feeds into template mapping
 - All four artifacts must be consistent and cross-referenced
 `;
 
@@ -270,6 +267,7 @@ const EDS_BLOCK_ANALYSER_PROMPT = `
 - [ ] Extract components and design patterns from each URL
 
 ### Phase 2: Component Analysis  
+- [ ] Use EDS Block Collection tool (list_blocks) to map components to Adobe EDS block collection patterns
 - [ ] Identify and categorize components as Simple/Medium/Complex
   - Simple (1-2 days): Static components (buttons, labels, basic text)
   - Medium (3-5 days): Interactive components with basic state (forms, modals, navigation)
@@ -277,17 +275,13 @@ const EDS_BLOCK_ANALYSER_PROMPT = `
 - [ ] Break large components (2-4 weeks, 1+ months) into manageable sub-components
   - Examples: Dashboards → Chart components (Simple) + data widgets (Medium) + interactive controls (Complex)
   - Guidelines: Each sub-component must be independently implementable, clear interfaces, sum individual efforts
-- [ ] Use EDS Block Collection tool (list_blocks) to map components to Adobe EDS block collection patterns
-
-### Phase 3: Estimation
-- [ ] Analyze complexity and estimate effort using EDS patterns
 - [ ] Identify component dependencies and integration requirements
 - [ ] Use **error_handling_framework** for analysis failures, invalid inputs, and escalation triggers
 
-### Phase 4: Documentation
+### Phase 3: Documentation
 - [ ] Use **self_evaluation_framework** to run quality assessment and ensure ≥95/100 score
 - [ ] Use **required_artifacts_framework** to create block analysis csv, summary report, and evaluation log
-- [ ] Verify all four artifacts are consistent and cross-referenced
+- [ ] Verify all four artifacts are generated and consistent, also cross-referenced
  
 ---
 `;
