@@ -21,7 +21,7 @@ const server = new McpServer(
 
 const role = `
 ## Role Definition
-You are a UI Architect responsible for analysing the website and estimating the effort to implement the blocks.
+You are a UI Architect responsible for analysing the website and estimating the effort to implement the EDS blocks.
 `;
 
 // Self-Evaluation Framework as a separate resource
@@ -169,7 +169,7 @@ const REQUIRED_ARTIFACTS_FRAMEWORK = `
 
 1. **CSV Analysis File** ('ui_blocks_analysis.csv')
    - Contains the complete component breakdown
-   - Format: "Page Title","UI Component Name","Function description","Tshirt Sizing","Number of occurrences","Complexity justification","Page URL","Source block name","Other remarks"
+   - Use the template 'ui-blocks-analysis-template' to create the csv file.
 
 2. **Summary Report** ('analysis_summary.md')
    - Executive summary of findings
@@ -184,6 +184,7 @@ const REQUIRED_ARTIFACTS_FRAMEWORK = `
    - Reusability recommendations
    - Technical implementation notes
    - Risk assessment and mitigation strategies
+   - use the template 'analysis-summary-template' to create the summary report.
 
 3. **Evaluation Log** ('evaluation_log.md')
    - **Iteration tracking**: Document each analysis iteration (1-3 max)
@@ -192,12 +193,14 @@ const REQUIRED_ARTIFACTS_FRAMEWORK = `
    - **Final evaluation**: Overall quality score and pass/fail status
    - **Time stamps**: When each iteration was completed
    - **Decision rationale**: Why iterations were needed and what was improved
+   - use the template 'evaluation-log-template' to create the evaluation log.
 
-4. **Template Mapping Diagram** ('template_mapping_diagram.md')
+4. **Template Mapping Diagram** ('template-mapping-template.md')
    - **Template Structure**: Document the template structure and component relationships.
    - **Component Relationships**: Document the relationships between components.
    - **Component Breakdown**: Document the breakdown of components into sub-components.
    - **Component Reusability**: Document the reusability of components.
+   - use the template 'template-mapping-template.md' to create the template mapping diagram.
 
 ### Artifact Dependencies
 - Site-urls artifact feeds into Initial Analysis
@@ -229,16 +232,31 @@ const SECURITY_GUARDRAILS_FRAMEWORK = `
 - Remove any potentially harmful or inappropriate content from analysis results
 `;
 
-// Function to read template mapping diagram from file
-function getTemplateMappingDiagram() {
+// Template name to file path mapping
+const TEMPLATE_MAPPING = [
+  { name: 'ui-blocks-analysis-template', file: 'ui-blocks-analysis-template.csv' },
+  { name: 'analysis-summary-template', file: 'analysis-summary-template.md' },
+  { name: 'evaluation-log-template', file: 'evaluation-log-template.md' },
+  { name: 'template-mapping-template', file: 'template-mapping-template.md' }
+];
+
+// Generic function to get template by name
+function getTemplate(templateName) {
   try {
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = dirname(__filename);
-    const templatePath = join(__dirname, 'templates', 'generic_template_mapping_diagram.md');
+    
+    // Find template mapping by name
+    const template = TEMPLATE_MAPPING.find(t => t.name === templateName);
+    if (!template) {
+      return `Error: Template '${templateName}' not found. Available templates: ${TEMPLATE_MAPPING.map(t => t.name).join(', ')}`;
+    }
+    
+    const templatePath = join(__dirname, 'templates', template.file);
     return readFileSync(templatePath, 'utf8');
   } catch (error) {
-    console.error('Error reading template mapping diagram:', error);
-    return 'Error: Could not load template mapping diagram.';
+    console.error(`Error reading template '${templateName}':`, error);
+    return `Error: Could not load template '${templateName}'.`;
   }
 }
 
@@ -268,8 +286,7 @@ const EDS_BLOCK_ANALYSER_PROMPT = `
 
 ### Phase 4: Documentation
 - [ ] Use **self_evaluation_framework** to run quality assessment and ensure ≥95/100 score
-- [ ] Use **required_artifacts_framework** to create CSV analysis, summary report, and evaluation log
-- [ ] Use **template_mapping_diagram** to document the template structure and component relationships.
+- [ ] Use **required_artifacts_framework** to create block analysis csv, summary report, and evaluation log
 - [ ] Verify all four artifacts are consistent and cross-referenced
  
 ---
@@ -330,14 +347,63 @@ server.registerTool("security_guardrails_framework",
   })
 );
 
-// Add a separate tool for accessing the generic template mapping diagram
-server.registerTool("template_mapping_diagram",
+// Add a generic tool for accessing any template by name
+server.registerTool("get_template",
+  {
+    title: "Get Template",
+    description: "Access any template by name. Available templates: ui-blocks-analysis-template, analysis-summary-template, evaluation-log-template, template-mapping-template",
+  },
+  async (args) => {
+    const templateName = args.templateName;
+    if (!templateName) {
+      return {
+        content: [{ type: "text", text: "Error: templateName parameter is required. Available templates: " + TEMPLATE_MAPPING.map(t => t.name).join(', ') }]
+      };
+    }
+    return {
+      content: [{ type: "text", text: getTemplate(templateName) }]
+    };
+  }
+);
+
+// Add individual tools for each artifact template
+server.registerTool("ui-blocks-analysis-template",
+  {
+    title: "UI Blocks Analysis Template",
+    description: "Access the CSV template for UI blocks analysis",
+  },
+  async () => ({
+    content: [{ type: "text", text: getTemplate('ui-blocks-analysis-template') }]
+  })
+);
+
+server.registerTool("analysis-summary-template",
+  {
+    title: "Analysis Summary Template",
+    description: "Access the markdown template for analysis summary report",
+  },
+  async () => ({
+    content: [{ type: "text", text: getTemplate('analysis-summary-template') }]
+  })
+);
+
+server.registerTool("evaluation-log-template",
+  {
+    title: "Evaluation Log Template",
+    description: "Access the markdown template for evaluation log",
+  },
+  async () => ({
+    content: [{ type: "text", text: getTemplate('evaluation-log-template') }]
+  })
+);
+
+server.registerTool("template-mapping-template",
   {
     title: "Template Mapping Diagram",
     description: "Access the generic template mapping diagram for website template analysis and documentation",
   },
   async () => ({
-    content: [{ type: "text", text: getTemplateMappingDiagram() }]
+    content: [{ type: "text", text: getTemplate('template-mapping-template') }]
   })
 );
 
