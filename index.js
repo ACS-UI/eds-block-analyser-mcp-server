@@ -238,64 +238,33 @@ function getTemplateMappingDiagram() {
 
 // Define the EDS Block Analyser prompt
 const EDS_BLOCK_ANALYSER_PROMPT = `
-## Analysis Workflow
+## Analysis Todo List
 
 ### Phase 1: Discovery
-- [ ] **Security**: Use **security_guardrails_framework** for secure analysis
-- [ ] **URL Discovery**: Scrape URLs, discover sub-pages, create site-urls artifact
-- [ ] **Content Extraction**: Extract components and design patterns from each URL
+- [ ] Use **security_guardrails_framework** for secure analysis and input validation
+- [ ] Use WebResearch tools (search_google, visit_page, take_screenshot) to scrape URLs, discover sub-pages, create site-urls artifact
+- [ ] Extract components and design patterns from each URL
 
 ### Phase 2: Component Analysis  
-- [ ] **Identification**: Identify and categorize components as Simple/Medium/Complex
-- [ ] **Breakdown**: Break large components (2-4 weeks, 1+ months) into manageable sub-components
-- [ ] **EDS Mapping**: Map components to Adobe EDS block collection patterns
-- [ ] **Template Analysis**: Use **template_mapping_diagram** for template structure understanding
+- [ ] Identify and categorize components as Simple/Medium/Complex
+  - Simple (1-2 days): Static components (buttons, labels, basic text)
+  - Medium (3-5 days): Interactive components with basic state (forms, modals, navigation)
+  - Complex (1-2 weeks): Complex components with multiple states (carousels, data tables, multi-step forms)
+- [ ] Break large components (2-4 weeks, 1+ months) into manageable sub-components
+  - Examples: Dashboards → Chart components (Simple) + data widgets (Medium) + interactive controls (Complex)
+  - Guidelines: Each sub-component must be independently implementable, clear interfaces, sum individual efforts
+- [ ] Use EDS Block Collection tool (list_blocks) to map components to Adobe EDS block collection patterns
+- [ ] Use **template_mapping_diagram** for template structure understanding
 
 ### Phase 3: Estimation
-- [ ] **Effort Estimation**: Analyze complexity and estimate effort using EDS patterns
-- [ ] **Dependencies**: Identify component dependencies and integration requirements
-- [ ] **Error Handling**: Use **error_handling_framework** for failure management
+- [ ] Analyze complexity and estimate effort using EDS patterns
+- [ ] Identify component dependencies and integration requirements
+- [ ] Use **error_handling_framework** for analysis failures, invalid inputs, and escalation triggers
 
 ### Phase 4: Documentation
-- [ ] **Artifacts**: Generate CSV, summary report, and evaluation log
-- [ ] **Quality Validation**: Use **self_evaluation_framework** to ensure ≥95/100 score
-- [ ] **Consistency**: Use **required_artifacts_framework** to verify all four artifacts are consistent
- 
-## Tools & Workflow
-
-### Available Tools
-- **WebResearch**: search_google, visit_page, take_screenshot for URL discovery and content extraction
-- **EDS Block Collection**: list_blocks for mapping components to Adobe EDS patterns
-
-### Processing Strategy
-- **URL Discovery**: Scrape provided URLs, discover all sub-pages, create site-urls artifact
-- **Intelligent Selection**: When >50 URLs found, prioritize distinct templates and page types
-- **Batch Processing**: Process in batches of 50, ensuring comprehensive coverage without duplication
-- **EDS Mapping**: Map discovered components to existing EDS blocks, ignore repeated templates
-- **Output Generation**: Create CSV analysis, summary report, and evaluation log
- 
----
- 
-## Component Complexity & Breakdown
-
-### Complexity Levels
-- **Simple (1-2 days)**: Static components (buttons, labels, basic text)
-- **Medium (3-5 days)**: Interactive components with basic state (forms, modals, navigation)
-- **Complex (1-2 weeks)**: Complex components with multiple states (carousels, data tables, multi-step forms)
-
-### Large Component Breakdown
-Break components taking 2-4 weeks or 1+ months into Simple/Medium/Complex sub-components:
-
-**Examples:**
-- **Dashboards**: Chart components (Simple) + data widgets (Medium) + interactive controls (Complex)
-- **Authentication**: Login forms (Medium) + session management (Complex) + security validations (Medium)
-- **Workflows**: Workflow steps (Medium) + state management (Complex) + user interactions (Simple/Medium)
-
-**Guidelines:**
-- Each sub-component must be independently implementable
-- Clear interfaces and dependencies
-- Sum individual efforts for total estimation
-- Maintain reusability across breakdown
+- [ ] Use **self_evaluation_framework** to run quality assessment and ensure ≥95/100 score
+- [ ] Use **required_artifacts_framework** to create CSV analysis, summary report, and evaluation log
+- [ ] Verify all four artifacts are consistent and cross-referenced
  
 ---
 `;
