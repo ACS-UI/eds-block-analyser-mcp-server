@@ -193,6 +193,12 @@ const REQUIRED_ARTIFACTS_FRAMEWORK = `
    - **Time stamps**: When each iteration was completed
    - **Decision rationale**: Why iterations were needed and what was improved
 
+4. **Template Mapping Diagram** ('template_mapping_diagram.md')
+   - **Template Structure**: Document the template structure and component relationships.
+   - **Component Relationships**: Document the relationships between components.
+   - **Component Breakdown**: Document the breakdown of components into sub-components.
+   - **Component Reusability**: Document the reusability of components.
+
 ### Artifact Dependencies
 - Site-urls artifact feeds into Initial Analysis
 - CSV file feeds into Summary report
@@ -254,7 +260,6 @@ const EDS_BLOCK_ANALYSER_PROMPT = `
   - Examples: Dashboards → Chart components (Simple) + data widgets (Medium) + interactive controls (Complex)
   - Guidelines: Each sub-component must be independently implementable, clear interfaces, sum individual efforts
 - [ ] Use EDS Block Collection tool (list_blocks) to map components to Adobe EDS block collection patterns
-- [ ] Use **template_mapping_diagram** for template structure understanding
 
 ### Phase 3: Estimation
 - [ ] Analyze complexity and estimate effort using EDS patterns
@@ -264,6 +269,7 @@ const EDS_BLOCK_ANALYSER_PROMPT = `
 ### Phase 4: Documentation
 - [ ] Use **self_evaluation_framework** to run quality assessment and ensure ≥95/100 score
 - [ ] Use **required_artifacts_framework** to create CSV analysis, summary report, and evaluation log
+- [ ] Use **template_mapping_diagram** to document the template structure and component relationships.
 - [ ] Verify all four artifacts are consistent and cross-referenced
  
 ---
